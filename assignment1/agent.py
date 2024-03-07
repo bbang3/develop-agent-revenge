@@ -71,7 +71,7 @@ class Agent:
 
     def call_api(self, messages, func_mode=False):
         response = self.openai_client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
+            model="gpt-4-0125-preview",
             messages=messages,
             tools=[tool.as_dict() for tool in self.tools] if func_mode else None,
         )
