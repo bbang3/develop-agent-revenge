@@ -1,16 +1,12 @@
-from tavily import TavilyClient
-from openai import OpenAI
-from dotenv import load_dotenv
-
-import os
 import json
+import os
 import time
-from typing import List
-from openai.types.chat.chat_completion import ChatCompletionMessage
 
-
-from tools.websurfer import WebSurfer
+from dotenv import load_dotenv
+from openai import OpenAI
 from prompt import SYSTEM_PROMPT
+from tavily import TavilyClient
+from tools.websurfer import WebSurfer
 
 
 class Agent:

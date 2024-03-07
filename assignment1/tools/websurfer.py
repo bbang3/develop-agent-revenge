@@ -1,7 +1,7 @@
-from tavily import TavilyClient
-from dotenv import load_dotenv
-
 import os
+
+from dotenv import load_dotenv
+from tavily import TavilyClient
 
 
 class WebSurfer:
