@@ -5,6 +5,13 @@
 
 ## How to start
 
+루트 디렉토리에 `.env` 파일을 생성한 후 API Key 값을 설정해주세요.
+```python
+OPENAI_API_KEY=<YOUR_API_KEY>
+TAVILY_API_KEY=<YOUR_API_KEY>
+```
+
+Poetry를 이용해 실행할 수 있습니다.
 ```bash
 poetry install
 poetry run python assignment1/main.py
