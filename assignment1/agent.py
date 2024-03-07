@@ -23,8 +23,7 @@ class Agent:
         self.TIMEOUT = 180
 
     def run(self):
-        print("Ask me anything: ")
-        query = input()
+        query = input("Ask me anything: ")
 
         answer = self.answer(query)
         print(answer)
