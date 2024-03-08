@@ -1,3 +1,6 @@
+# Sandbox folder (for develop agent)
+sandbox/
+
 # Unused Jupyter Notebook files
 *.ipynb
 
