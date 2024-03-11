@@ -17,7 +17,7 @@ class CodeWriter:
                 "code": {"type": "string", "description": "The code you generated"},
                 "description": {
                     "type": "string",
-                    "description": "A description of what your code does",
+                    "description": "A brief description of what your code does. Be sure to specify any dependencies your code needs, such as file paths, Element identifiers, API endpoints, etc.",
                 },
             },
             "required": ["path", "code", "description"],
