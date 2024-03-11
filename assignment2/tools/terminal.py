@@ -36,10 +36,11 @@ class Terminal:
     def __call__(self, command: str) -> tuple[str, str]:
         print(f"Running command: {command}")
 
+        real_command = command
         if self.dir:
             if not os.path.exists(self.dir):
                 os.system(f"mkdir {self.dir}")
-            real_command = f"cd {self.dir} && {command}"
+            real_command = f"cd {self.dir} && {real_command}"
         popen = subprocess.Popen(
             real_command,
             stdout=subprocess.PIPE,
