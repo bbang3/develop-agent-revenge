@@ -10,6 +10,16 @@
     4. Please develop a simple todo webpage. The user should be able to add and delete todo and see all todos. Develop in a neumorphism style. The port you can use is 8080.
     5. Please develop a tetris game web page. Be sure to handle user inputs via keyboard. The port you can use is 8080.
 
+## Results
+### Task 1
+![t1](../assets/Task%201.png)
+### Task 2
+![t1](../assets/Task%202.png)
+### Task 3
+![t1](../assets/Task%203.png)
+### Taks 4
+![t4](../assets/Task%204.png)
+
 ## How to start
 다음 명령어를 실행해주세요.
 ```bash
