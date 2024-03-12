@@ -57,7 +57,7 @@ Reasoning-and-Acting 방법에서 영감을 받아, 그와 유사한 Iteration �
 
 3. Code Reader
 - 기존 파일에 적힌 코드 전체를 읽어옵니다.
-- Parameter: Code writer와 동일
+- Parameter: `path`
 - Observation: 코드 전체
 
 4. Code Appender
