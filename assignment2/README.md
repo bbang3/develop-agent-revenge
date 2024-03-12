@@ -28,6 +28,43 @@ If you want to edit the code, Enter additional prompts (Enter to exit):
 
 서버를 실행해본 뒤 수정할 부분이 있다면 추가 요청을 프롬프트로 다시 제공해주세요. 없다면 엔터를 눌러 프로그램을 종료해주시면 됩니다.
 
+## Approach
+Reasoning-and-Acting 방법에서 영감을 받아, 그와 유사한 Iteration 과정을 구현하였습니다.
+
+에이전트가 유저 프롬프트에 대응하는 과정은 다음과 같습니다.
+
+1. Reasoning phase
+- 다음으로 해야 할 일을 생각합니다. "자연어로 된 한 줄의 문장"을 생성하도록 지시하였습니다.
+2. Acting phase
+- Reasoning phase에서 생성한 thought과, 이전의 acting history를 주고 Tool들 중 하나를 골라 행동하도록 합니다.
+- OpenAI Function calling을 사용하였습니다.
+- Acting의 결과는 history에 누적해서 기록됩니다. History의 형태는 다음과 같습니다.
+  - Thought / Action / **Observation** (Tool 실행 결과)
+
+
+
+### Tools
+1. Code Writer
+- 단일 파일로 된 코드를 작성합니다.
+- Parameter: `path`,`code`,`description`
+  - description은 작성한 코드에 대한 설명입니다. API endpoint 등 다른 파일과 dependency가 있을만한 내용을 중점적으로 서술하도록 했습니다.
+- Observation: path, code, description (실제 작성 코드는 제외)
+
+2. Terminal
+- 한 줄로 된 터미널 명령을 실행합니다.
+- Parameter: `command`
+- Observation: 터미널 실행 결과
+
+3. Code Reader
+- 기존 파일에 적힌 코드 전체를 읽어옵니다.
+- Parameter: Code writer와 동일
+- Observation: 코드 전체
+
+4. Code Appender
+- 기존 파일에 코드를 추가합니다.
+- Parameter: `Code writer`와 동일
+- Observation: `Code writer`와 동일
+
 ## Limitations
 - 여러 파일을 작성해야 할 때, 종속성을 반영하지 않고 코드를 작성합니다. (e.g. HTML에 ID가 `todo` element를 선언해놓고 js에서 다른 ID를 참조하는 문제)
 - 테트리스와 같은 복잡한 로직을 작성해야 하는 경우 온전한 코드를 작성하지 않습니다. (e.g. 함수 내에 주석만 작성하는 등)
