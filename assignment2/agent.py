@@ -1,7 +1,6 @@
 import json
 import os
 import shutil
-from datetime import datetime
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -70,7 +69,7 @@ class Agent:
                 "role": "user",
                 "content": REASONING_PROMPT.format(
                     prompt=user_prompt,
-                    history=self.history if self.history else "None",
+                    history=self.history or "None",
                 ),
             },
         ]
