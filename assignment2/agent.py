@@ -16,7 +16,7 @@ from tools import CodeWriter, CodeReader, CodeAppender, Terminal
 
 class Agent:
     def __init__(self, sandbox_path: str = "sandbox") -> None:
-        load_dotenv()
+        _ = load_dotenv()
         self.sandbox_path = sandbox_path
 
         self.openai_client: OpenAI = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -91,7 +91,7 @@ class Agent:
                 "role": "user",
                 "content": ACT_PROMPT.format(
                     prompt=user_prompt,
-                    history=self.history if self.history else "None",
+                    history=self.history or "None",
                     thought=thought,
                 ),
             },
@@ -101,10 +101,10 @@ class Agent:
         tool_calls = response_message.tool_calls
         action_taken = False
         if tool_calls:
-            avilable_funcs = {tool.func_name: tool for tool in self.tools}
+            tools_dict = {tool.func_name: tool for tool in self.tools}
             for tool_call in tool_calls:
                 func_name = tool_call.function.name
-                func = avilable_funcs.get(func_name)
+                func = tools_dict.get(func_name)
                 if func is None:
                     print("Tool not found: ", tool_call.function.name)
                     continue
