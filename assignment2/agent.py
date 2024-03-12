@@ -99,6 +99,7 @@ class Agent:
         history = ""
         response_message = self.call_api(messages, func_mode=True)
         tool_calls = response_message.tool_calls
+        action_taken = False
         if tool_calls:
             avilable_funcs = {tool.func_name: tool for tool in self.tools}
             for tool_call in tool_calls:
@@ -110,11 +111,20 @@ class Agent:
 
                 func_args = json.loads(tool_call.function.arguments)
                 func_response = func(**func_args)
+
                 history += HISTORY_FORMAT.format(
                     thought=thought,
                     action=func_name,
                     observation=func_response,
                 )
+                action_taken = True
+
+        if not action_taken:  # handling no tool calls
+            history += HISTORY_FORMAT.format(
+                thought=thought,
+                action="None",
+                observation="No action taken.",
+            )
 
         return history
 
