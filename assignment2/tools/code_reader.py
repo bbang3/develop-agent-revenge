@@ -3,20 +3,21 @@ from typing import Any
 
 
 class CodeReader:
+    func_name = "read_code"
+    description = "Read existing code from a file to understand its details."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "path": {
+                "type": "string",
+                "description": "The path to the file to read. e.g. 'src/main.py'",
+            },
+        },
+        "required": ["path"],
+    }
+
     def __init__(self, dir="./") -> None:
         self.dir = dir
-        self.func_name = "read_code"
-        self.description = "Read existing code from a file to understand its details."
-        self.parameters = {
-            "type": "object",
-            "properties": {
-                "path": {
-                    "type": "string",
-                    "description": "The path to the file to read. e.g. 'src/main.py'",
-                },
-            },
-            "required": ["path"],
-        }
 
     def as_dict(self):
         return {

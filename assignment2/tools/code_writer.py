@@ -3,25 +3,26 @@ from typing import Any
 
 
 class CodeWriter:
+    func_name = "write_code"
+    description = "Write code that implements the given task."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "path": {
+                "type": "string",
+                "description": "The path to the file to be written. e.g. 'src/main.py'",
+            },
+            "code": {"type": "string", "description": "The code you generated"},
+            "description": {
+                "type": "string",
+                "description": "A brief description of what your code does. Be sure to specify any dependencies your code needs, such as file paths, Element identifiers, API endpoints, etc.",
+            },
+        },
+        "required": ["path", "code", "description"],
+    }
+
     def __init__(self, dir="./") -> None:
         self.dir = dir
-        self.func_name = "write_code"
-        self.description = "Write code that implements the given task."
-        self.parameters = {
-            "type": "object",
-            "properties": {
-                "path": {
-                    "type": "string",
-                    "description": "The path to the file to be written. e.g. 'src/main.py'",
-                },
-                "code": {"type": "string", "description": "The code you generated"},
-                "description": {
-                    "type": "string",
-                    "description": "A brief description of what your code does. Be sure to specify any dependencies your code needs, such as file paths, Element identifiers, API endpoints, etc.",
-                },
-            },
-            "required": ["path", "code", "description"],
-        }
 
     def as_dict(self):
         return {

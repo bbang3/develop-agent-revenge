@@ -8,20 +8,21 @@ class Terminal:
     Output is returned as a tuple of (stdout, stderr).
     """
 
+    func_name = "run_terminal"
+    description = "Run a single line of terminal command."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "command": {
+                "type": "string",
+                "description": "The command to run",
+            },
+        },
+        "required": ["command"],
+    }
+
     def __init__(self, dir="./") -> None:
         self.dir = dir  # The directory to run the command in
-        self.func_name = "run_terminal"
-        self.description = "Write code that implements the given task."
-        self.parameters = {
-            "type": "object",
-            "properties": {
-                "command": {
-                    "type": "string",
-                    "description": "The command to run",
-                },
-            },
-            "required": ["command"],
-        }
 
     def as_dict(self):
         return {
