@@ -1,5 +1,5 @@
 # develop-agent-revenge
-Agent와 친해지기!
+Getting familiar with LLM agents!
 
-## [Assignment1](./assignment1/README.md)
-## [Assignment2](./assignment2/README.md)
+## [Proejct 1](./assignment1/README.md)
+## [Proejct 2](./assignment2/README.md)
