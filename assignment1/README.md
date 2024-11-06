@@ -1,4 +1,4 @@
-# Assignment 1
+# Project 1
 - Build an agent that answers to questions user asked.
 - Agent can search on the Web. Answers only if it has enough information.
 - If gathering information takes more than 3 minutes, agent stops thinking and generates answer immediately.
